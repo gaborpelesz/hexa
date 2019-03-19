@@ -1,4 +1,4 @@
-# TODO exehexa . 
+# TODO exehexa  
 if you want to test, create a directory called 'testCases' and put images into it following this format:  
 ------- seqNum_Value.jpg -------  
 where:  

@@ -1,4 +1,12 @@
+# folders that contains test images
 testCases/
 extreme/
+
+# any leftover image
 *.jpg
+
+# python cached data
 __pycache__
+
+# macOS folder file
+.DS_Store

@@ -15,9 +15,9 @@ def isBlack(bgr, maximumDifference, minimumColorForWhite):
     if r_b_difference <= 10 and r_g_difference > 20:
         return False
 
-    if r_g_difference < -10 or abs(r_g_difference) > maximumDifference:
+    if r_g_difference < -15 or abs(r_g_difference) > maximumDifference:
         return False
-    if r_b_difference < -10 or abs(r_b_difference) > maximumDifference:
+    if r_b_difference < -15 or abs(r_b_difference) > maximumDifference:
         return False
 
     return False if abs(b_g_difference) > maximumDifference else True
@@ -30,7 +30,7 @@ def processingForTests(imgPath):
         img = image_resize(img, 1000)
 
     # ------ Getting white and black balance ------
-    maximumBlackDifference = 25
+    maximumBlackDifference = 30
     # 1000/25, 750/18,75 ~> (40,40) bal felső
     # 24*1000/25, 750/18,75 ~> (960, 40) jobb felső
     # 1000/25, 17,75*750/18,75 ~> (40, 710) bal alsó
@@ -78,7 +78,8 @@ def processingForTests(imgPath):
 # --------------- END OF TESTING FUNCTION ---------------
 
 def main():
-    img = cv2.imread('testCases/120_011102120211120122020121201220000.jpg', 1)
+    img = cv2.imread('testCases/5_001210012101112.jpg', 1)
+    testIndex = 3
     # img = cv2.imread('test_morningCloudy/orange.jpg', 1)
     # img = cv2.imread('test_evening_warmLight/blue3.jpg', 1)
     # img = cv2.imread('1_croppedHexagon.jpg', 1)
@@ -91,7 +92,7 @@ def main():
         img = image_resize(img, 1000)
 
     # ------ Getting white and black balance ------
-    maximumBlackDifference = 25
+    maximumBlackDifference = 30
     # MINTAVÉTELEZÉS A MEGFELELŐ FEHÉR SZÍN KIVÁLASZTÁSÁÉRT
     # arány párok, hogy ha a kép kisebb mint 1000 * 750
     # 1000/25, 750/18,75 ~> (40,40) bal felső
@@ -104,6 +105,12 @@ def main():
     bottom_left_max_color = max(img[round(17.75*float(y)/18.75), round(float(x)/25.0)])
     bottom_right_max_color = max(img[round(17.75*float(y)/18.75), round(24*float(x)/25.0)])
     minimumWhiteColor = (int(upper_left_max_color) + int(upper_right_max_color) + int(bottom_left_max_color) + int(bottom_right_max_color)) // 4
+    # white color correction
+    minimumWhiteColor -= 15
+    print('minimumWhiteColor:', upper_left_max_color)
+    print('minimumWhiteColor:', upper_right_max_color)
+    print('minimumWhiteColor:', bottom_left_max_color)
+    print('minimumWhiteColor:', bottom_right_max_color)
     if minimumWhiteColor > 160:
         minimumWhiteColor = 170
     # ---------------------------------------------
@@ -172,7 +179,7 @@ def main():
     print(len(allMasks))
     # for mask in allMasks:
     #     maskResult = cv2.bitwise_or(maskResult, cv2.bitwise_not(mask))
-    maskToTest = allMasks[7].copy()
+    maskToTest = allMasks[testIndex-1].copy()
     cv2.namedWindow('maskToTest', cv2.WINDOW_NORMAL)
     cv2.resizeWindow('maskToTest', 900, 600)
     cv2.imshow('maskToTest', maskToTest)

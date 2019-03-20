@@ -35,7 +35,7 @@ tests_failed = 0
 tests_that_failed = []
 
 # LOADING BAR FOR USER EXPERIENCE
-loading_bar = '[' + (100*' ') +']'
+loading_bar = '[' + (50*' ') + ']'
 print(30*'\n'+ 'PROCESSING TEST IMAGES:\n')
 print("0/{0} Image processed".format(tests_number))
 print("0% Completed")
@@ -66,9 +66,9 @@ for i, test_file_name in enumerate(test_file_names):
         tests_failed += 1
 
     # progress with loading bar
-    equal_signs = round(float(i+1)/float(tests_number)*100)
-    spaces = 100 - equal_signs
-    loading_bar = '[' + equal_signs*'=' + (spaces*' ') +']'
+    equal_signs = round(float(i+1)/float(tests_number)*50)
+    spaces = 50 - equal_signs
+    loading_bar = '[' + equal_signs*'=' + (spaces*' ') + ']'
     print(30*'\n'+ 'PROCESSING TEST IMAGES:\n')
     print("{0}/{1} Image processed".format(i+1,tests_number))
     print("{0:.00f}% Completed".format(float(i+1)/float(tests_number)*100))

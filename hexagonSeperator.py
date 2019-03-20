@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-_DEBUG = True
+_DEBUG = False
 
 class HexagonSeperator:
     def __init__(self, image):

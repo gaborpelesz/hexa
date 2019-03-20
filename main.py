@@ -79,7 +79,7 @@ def processingForTests(imgPath):
 # --------------- END OF TESTING FUNCTION ---------------
 
 def main():
-    img = cv2.imread('testCases/53_220211201222202.jpg', 1)
+    img = cv2.imread('testCases/52_220211201222202.jpg', 1)
     # print('\n')
     testIndex = 3
     # img = cv2.imread('test_morningCloudy/orange.jpg', 1)

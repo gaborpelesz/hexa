@@ -154,7 +154,8 @@ def processingHexagon(hexagonImage, hexagonBoxArea):
             # or (in case of the contour has some weird sides)
             # the ratio of the hexagons enclosing rectangle and the area of the contour is less than 11.5
             # then it is probably a triangle with 2 white object
-            elif (sideRatio < 2.3 and boxTriangleRatio > 9.6): # or boxTriangleRatio > 14.0:
+            elif (sideRatio < 2.3 and boxTriangleRatio > 9.55): # or boxTriangleRatio > 14.0:
+                # TODO vajon le lehet menni sideRatio > 2.0-ra?
                 numSequence += "2"
                 # ---------- DEBUG ------------
                 if _DEBUG: sideRatio

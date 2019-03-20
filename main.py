@@ -41,6 +41,7 @@ def processingForTests(imgPath):
     bottom_left_max_color = max(img[round(17.75*float(y)/18.75), round(float(x)/25.0)])
     bottom_right_max_color = max(img[round(17.75*float(y)/18.75), round(24*float(x)/25.0)])
     minimumWhiteColor = (int(upper_left_max_color) + int(upper_right_max_color) + int(bottom_left_max_color) + int(bottom_right_max_color)) // 4
+    minimumWhiteColor -= 15
     if minimumWhiteColor > 160:
         minimumWhiteColor = 170
     # ---------------------------------------------
@@ -78,7 +79,8 @@ def processingForTests(imgPath):
 # --------------- END OF TESTING FUNCTION ---------------
 
 def main():
-    img = cv2.imread('testCases/5_001210012101112.jpg', 1)
+    img = cv2.imread('testCases/53_220211201222202.jpg', 1)
+    # print('\n')
     testIndex = 3
     # img = cv2.imread('test_morningCloudy/orange.jpg', 1)
     # img = cv2.imread('test_evening_warmLight/blue3.jpg', 1)

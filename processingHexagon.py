@@ -145,6 +145,7 @@ def processingHexagon(hexagonImage, hexagonBoxArea):
             boxTriangleRatio = hexagonBoxArea/cv2.contourArea(sortedTriangle)
             if _DEBUG: 
                 print('\n{0}. sideRatio: {1}'.format(i+1, sideRatio))
+                print('{0}. boxTriangleRatio: {1}'.format(i+1, boxTriangleRatio))
                 print('-----------------------------')
             if sideRatio == -1:
                 raise Exception('NOT FOUND SIDES WITH LESS THAN 20 DEGREE ANGLES...')
@@ -153,7 +154,7 @@ def processingHexagon(hexagonImage, hexagonBoxArea):
             # or (in case of the contour has some weird sides)
             # the ratio of the hexagons enclosing rectangle and the area of the contour is less than 11.5
             # then it is probably a triangle with 2 white object
-            elif (sideRatio < 2.5 and boxTriangleRatio > 10.0): # or boxTriangleRatio > 14.0:
+            elif (sideRatio < 2.3 and boxTriangleRatio > 9.6): # or boxTriangleRatio > 14.0:
                 numSequence += "2"
                 # ---------- DEBUG ------------
                 if _DEBUG: sideRatio

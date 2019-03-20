@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+_DEBUG = True
+
 class HexagonSeperator:
     def __init__(self, image):
         try:
@@ -14,6 +16,12 @@ class HexagonSeperator:
         # TODO maybe morph close for safety? Not needed till now
         # img = self.morphologicalClose(img)
 
+        # ---------- DEBUG ------------
+        if _DEBUG:
+            cv2.namedWindow('seperation', cv2.WINDOW_NORMAL)
+            cv2.resizeWindow('seperation', 900, 600)
+            cv2.imshow('seperation', contourReady)
+        # ---------- DEBUG END ------------
 
         contours = self.findContours(contourReady)
         contours = self.removeSmallShapes(contours)

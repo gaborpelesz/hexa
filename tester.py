@@ -15,8 +15,6 @@
 
 import os
 from main import processingForTests
-def getKey(item):
-    return item[0]
 
 # we assume that the testCases folder is in the same directory as the tester.py
 # so we get the tester.py's path
@@ -36,8 +34,16 @@ tests_succeded = 0
 tests_failed = 0
 tests_that_failed = []
 
+# LOADING BAR FOR USER EXPERIENCE
+loading_bar = '[' + (100*' ') +']'
+print(30*'\n'+ 'PROCESSING TEST IMAGES:\n')
+print("0/{0} Image processed".format(tests_number))
+print("0% Completed")
+print(loading_bar)
+# LOADING BAR FOR USER EXPERIENCE
+
 # we have file names in the following format seqNum_value.jpg
-for test_file_name in test_file_names:
+for i, test_file_name in enumerate(test_file_names):
     # we get seqNum by splitting at '_' and getting the first part
     seqNum = test_file_name.split('_')[0]
     # we get assertValue by splitting the second part at '.' and getting the first part
@@ -45,7 +51,6 @@ for test_file_name in test_file_names:
 
     try:
         result = processingForTests(testCasesDir + '/' + test_file_name)
-        # result = 0
         if assertValue == result:
             tests_succeded += 1
         else:
@@ -60,9 +65,17 @@ for test_file_name in test_file_names:
         \nat the PROCESSING phase failed and not all black triangles were detected...\nDebug at seperation phase NEEDED if the failed image is not tilted\n'])
         tests_failed += 1
 
+    # progress with loading bar
+    equal_signs = round(float(i+1)/float(tests_number)*100)
+    spaces = 100 - equal_signs
+    loading_bar = '[' + equal_signs*'=' + (spaces*' ') +']'
+    print(30*'\n'+ 'PROCESSING TEST IMAGES:\n')
+    print("{0}/{1} Image processed".format(i+1,tests_number))
+    print("{0:.00f}% Completed".format(float(i+1)/float(tests_number)*100))
+    print(loading_bar)
 
 print('------------------------')
-print('Test completed:\n')
+print('Processing on test images completed:\n')
 print('\tTotal number of tests:',tests_number)
 print('\tTotal succeded:', tests_succeded)
 print('\tTotal failed:', tests_failed)

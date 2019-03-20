@@ -1,0 +1,4 @@
+testCases/
+extreme/
+*.jpg
+__pycache__

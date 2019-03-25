@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-_DEBUG = False
+_DEBUG = True
 
 class HexagonSeperator:
     def __init__(self, image):
@@ -26,8 +26,8 @@ class HexagonSeperator:
         contours = self.findContours(contourReady)
         contours = self.removeSmallShapes(contours)
         cv2.drawContours(contourReady, contours, -1, 100, 10)
-        sortedRowsOfHexagons = self.sortHexagons(contours)
-        return sortedRowsOfHexagons
+        sortedRowsOfHexagonContours = self.sortHexagons(contours)
+        return sortedRowsOfHexagonContours
     
     @staticmethod
     def threshold(img):

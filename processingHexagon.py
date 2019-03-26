@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # DEBUG variable
-_DEBUG = True
+_DEBUG = False
 
 def processingHexagon(hexagonImage, hexagonBoxArea):
     # hexagonImage = cv2.cvtColor(hexagonImage, cv2.COLOR_BGR2GRAY)

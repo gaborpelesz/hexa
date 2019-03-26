@@ -95,12 +95,12 @@ def main():
 
     # ------ Getting white and black balance ------
     maximumBlackDifference = 30
-    # MINTAVÉTELEZÉS A MEGFELELŐ FEHÉR SZÍN KIVÁLASZTÁSÁÉRT
-    # arány párok, hogy ha a kép kisebb mint 1000 * 750
-    # 1000/25, 750/18,75 ~> (40,40) bal felső
-    # 24*1000/25, 750/18,75 ~> (960, 40) jobb felső
-    # 1000/25, 17,75*750/18,75 ~> (40, 710) bal alsó
-    # 24*1000/25, 17,75*750/18,75  ~> (960, 710) jobb alsó
+    # GET SAMPLE DATA FROM CREATING A BETTER WHITE BALANCE FOR THRESHOLDING
+    # ratio pairs, if the image is greater than 1000 * 750
+    # 1000/25, 750/18,75 ~> (40,40) top left
+    # 24*1000/25, 750/18,75 ~> (960, 40) top right
+    # 1000/25, 17,75*750/18,75 ~> (40, 710) bottom left
+    # 24*1000/25, 17,75*750/18,75  ~> (960, 710) bottom right
     y, x = img.shape[0], img.shape[1]
     upper_left_max_color = max(img[round(float(y)/18.75), round(float(x)/25.0)])
     upper_right_max_color = max(img[round(float(y)/18.75), round(24*float(x)/25.0)])

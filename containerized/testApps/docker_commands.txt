@@ -1,6 +1,0 @@
-## DOCKER IMAGE BUILD AND START ##
-
-docker build -t test_app .
-
-# so docker gets mounted with images and every change to that directory changes the local one #
-docker run -it -p 4000:80 -v `pwd`/app/images:/app/images test_app

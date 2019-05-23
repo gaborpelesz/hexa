@@ -41,9 +41,10 @@ def processingHexagonFromMLEdgeModel(hexagonImage, imhelper=None):
         value is below score 70. Please take another, better image.")
     # METHOD 2. two highest scores difference is less than 30
     sorted_predictions = sorted(output_data[0])
-    if max_prediction_value - sorted_predictions[len(sorted_predictions)-1] < 30:
+    if max_prediction_value - sorted_predictions[len(sorted_predictions)-2] < 30:
         raise Exception("The prediction for a hexagon is not certain, because the two highest \
-        values difference is greater than 30. Please take another, better image.")
+        values difference is greater than 30 ({}-{} < 30). \
+        Please take another, better image.".format(max_prediction_value, sorted_predictions[len(sorted_predictions)-2]))
     # ---------------------------
 
     # open labels file and create a list from the labels

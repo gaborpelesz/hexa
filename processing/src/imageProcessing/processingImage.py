@@ -96,7 +96,7 @@ def processing_image(img, imhelper=None) -> str:
             try:
                 numSequence, max_predicted_value = processingHexagonFromMLEdgeModel(mask, imhelper) # PROCESSING HEXAGON
             except Exception as error:
-                print("Probably the processing couldn't predict good enough what the image was.")
+                print("Probably the prediction wasn't good enough.")
                 print("ERROR:", error)
                 numSequence = "eee"
                 max_predicted_value = -1

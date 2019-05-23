@@ -10,3 +10,6 @@ extreme/
 
 # macOS folder file
 .DS_Store
+
+# npm node modules from nodejs app
+node_modules

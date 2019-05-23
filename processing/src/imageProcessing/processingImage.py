@@ -93,7 +93,14 @@ def processing_image(img, imhelper=None) -> str:
                     if maskPP[0] == 0 and maskPP[1] == 0 and maskPP[2] == 0:
                         mask[j-y, i-x] = img[j, i]
             mask = cv2.cvtColor(mask, cv2.COLOR_BGR2RGB)
-            numSequence, max_predicted_value = processingHexagonFromMLEdgeModel(mask, imhelper) # PROCESSING HEXAGON
+            try:
+                numSequence, max_predicted_value = processingHexagonFromMLEdgeModel(mask, imhelper) # PROCESSING HEXAGON
+            except Exception as error:
+                print("Probably the processing couldn't predict good enough what the image was.")
+                print("ERROR:", error)
+                numSequence = "eee"
+                max_predicted_value = -1
+
             for j in range(3):
                 numsInRow[j] += numSequence[j]
         finalResultInBase3 += "".join(numsInRow)

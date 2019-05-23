@@ -4,21 +4,50 @@ import numpy as np
 _DEBUG = False
 
 class HexagonSeparator:
+    """This class is responsible for separate Hexagons from an image input.
+
+        The class has several methods that helps the previously mentioned,
+        behavior. When an object is created from this class, it will initialize
+        an image to this class's image attribute. Further function calls will
+        work on this image and will return the processed results.
+    """
+
     def __init__(self, image):
+        """Gets the image parameter and sets the image attribute to its value.
+
+            Args:
+                image: This should be a numpy array containing a cv2 image,
+                    which from we initialize our image attribute.
+        """
         try:
             self.image = image.copy()
         except:
-            print("Couldn't copy image in HexagonSeparator constructor...")
+            print("Couldn't copy image in HexagonSeparator constructor...") # TODO raise
 
     def separateHexagons(self, imhelper=None):
+        """Starts to process the class's image attribute and pass data,
+        to the provided HexagonImage class.
+
+        The easiest way to understand this function is to write a short
+        list about what is does.
+            1. It thresholds the image to a binary image.
+            2. Does some morphological operations to reduce noise.
+            3. Finds the contours on the image.
+            4. Remove accidentally found smaller contours.
+            5. Sort the contours according to the hexagons layout.
+
+        Return:
+            Sorted hexagons contours which are in
+            format of cv2 contour nparrays.
+        """
         thresholded = self.threshold(self.image)
         contourReady = self.morphologicalOpen(thresholded)
         contours = self.findContours(contourReady)
         contours = self.removeSmallShapes(contours)
         sortedRowsOfHexagonContours = self.sortHexagons(contours)
-        """ image handler """
+        # Draw to the image we want to visualize the steps on #
         if imhelper: imhelper.draw(sortedRowsOfHexagonContours[0]+sortedRowsOfHexagonContours[1])
-        """ ------------- """
+        # --------------------------------------------------- #
         return sortedRowsOfHexagonContours
 
     @staticmethod
@@ -74,8 +103,7 @@ class HexagonSeparator:
         return contours
 
     def sortHexagons(self, hexagons):
-        """
-            Sorting algorithm:
+        """Sorting algorithm:
                 Searching the first instance from top (y-axis), that center of a hexagon
                 will be the 'range calculator'.
 

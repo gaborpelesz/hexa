@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  node:
+    image: nodeapp
+    build: ./app
+    ports:
+      - 80:3000
+
+  processing:
+    image: processing
+    build: ./processing
+    ports:
+      - 3000:3000

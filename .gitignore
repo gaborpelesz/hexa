@@ -6,7 +6,7 @@ extreme/
 *.jpg
 
 # python cached data
-__pycache__
+*/__pycache__
 
 # macOS folder file
 .DS_Store

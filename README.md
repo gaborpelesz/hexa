@@ -1,9 +1,9 @@
-# Exahexa python computer vision backend
+# Hexa python computer vision backend
 
 ## Init/Install Project
 
 ```bash
-cd exahexa && make build && make run
+cd hexa && make build && make run
 ```
 
 ## Makefile
@@ -81,10 +81,10 @@ Response example when prediction failed (where the score 70 comes from PRED_MIN_
 **PRED_MIN_SCORE_LIMIT** (optional) is setting the minimum score limit that is allowed at making a prediction. Otherwise, if the highest scored label is below that limit, the prediction is considered weak.  
 **PRED_MAX_DIFF_LIMIT** (optional) is setting the maximum difference from the highest score and the second highest score, thus avoid uncertainty.
 
-There is a **Postman** example included, in the *exahexa.postman_collection.json* file from the next section.
+There is a **Postman** example included, in the *hexa.postman_collection.json* file from the next section.
 
 ## Postman
 
-Postman collection file: `postman_example/exahexa.postman_collection.json`.
+Postman collection file: `postman_example/hexa.postman_collection.json`.
 
 © gaborpelesz 2019

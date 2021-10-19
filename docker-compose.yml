@@ -1,15 +1,9 @@
-version: '3'
+version: '3.1'
 
 services:
-
-  node:
-    image: nodeapp
-    build: ./app
-    ports:
-      - 80:3000
-
-  processing:
-    image: processing
-    build: ./processing
+  python:
+    build: .
+    image: hexa:python
+    restart: always
     ports:
       - 3000:3000

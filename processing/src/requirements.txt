@@ -1,4 +1,0 @@
-Flask
-flask_api
-imageio
-tensorflow

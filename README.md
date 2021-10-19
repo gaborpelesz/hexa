@@ -1,4 +1,4 @@
-# Exahexa python computer vision backend
+# Hexa python computer vision backend
 
 ## Init/Install Project
 
